@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar System 3D</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <div id="scene-root" class="scene-root" aria-label="Interactive 3D solar system"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="sun-dot" aria-hidden="true"></span>
+          <div>
+            <h1>Solar System 3D</h1>
+            <p id="statusText">Live orbital model</p>
+          </div>
+        </div>
+
+        <dl class="readout" aria-label="Simulation readout">
+          <div>
+            <dt>Target</dt>
+            <dd id="targetReadout">Sun</dd>
+          </div>
+          <div>
+            <dt>Speed</dt>
+            <dd id="speedReadout">1.2x</dd>
+          </div>
+          <div>
+            <dt>Bodies</dt>
+            <dd>26</dd>
+          </div>
+        </dl>
+      </header>
+
+      <aside class="control-panel" aria-label="Solar system controls">
+        <div class="transport-row">
+          <button id="pauseButton" class="primary-control" type="button" data-testid="pause-button">
+            Pause
+          </button>
+          <button id="resetButton" class="icon-control" type="button" aria-label="Reset view" title="Reset view">
+            Reset
+          </button>
+        </div>
+
+        <label class="range-control" for="speedSlider">
+          <span>Speed</span>
+          <input id="speedSlider" type="range" min="0" max="5" step="0.1" value="1.2" />
+          <strong id="speedValue">1.2x</strong>
+        </label>
+
+        <div class="toggle-grid">
+          <label class="toggle-pill">
+            <input id="labelsToggle" type="checkbox" checked />
+            <span>Labels</span>
+          </label>
+          <label class="toggle-pill">
+            <input id="orbitsToggle" type="checkbox" checked />
+            <span>Orbits</span>
+          </label>
+          <label class="toggle-pill">
+            <input id="followToggle" type="checkbox" checked />
+            <span>Follow</span>
+          </label>
+        </div>
+
+        <div class="planet-list" id="planetList" aria-label="Focus a planet"></div>
+      </aside>
+
+      <aside class="info-card" id="infoCard" aria-live="polite">
+        <p class="eyebrow" id="infoType">Star</p>
+        <h2 id="infoName">Sun</h2>
+        <p id="infoSummary">
+          The center of this system. Its animated glow lights every planet, moon, ring, and asteroid.
+        </p>
+        <dl class="facts-grid">
+          <div>
+            <dt>Diameter</dt>
+            <dd id="factDiameter">1.39 million km</dd>
+          </div>
+          <div>
+            <dt>Day</dt>
+            <dd id="factDay">25 Earth days</dd>
+          </div>
+          <div>
+            <dt>Year</dt>
+            <dd id="factYear">System center</dd>
+          </div>
+          <div>
+            <dt>Moons</dt>
+            <dd id="factMoons">Planets orbit it</dd>
+          </div>
+        </dl>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS2DRenderer.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
